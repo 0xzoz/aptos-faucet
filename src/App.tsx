@@ -3,8 +3,11 @@ import Modal from 'react-modal';
 import logo from './logo.jpg';
 import aptosLogo from './aptos_logo_wordmark_transparent_blk.png';
 import Button from '@mui/material/Button';
+import {TxnRequest, Account, RestClient, FaucetClient} from './ts/accounts.ts'
 import './App.css';
 
+export const TESTNET_URL = "https://fullnode.devnet.aptoslabs.com";
+export const FAUCET_URL = "https://faucet.devnet.aptoslabs.com";
 
 const customStyles = {
   content: {
@@ -26,12 +29,26 @@ function App() {
     setIsOpen(true);
   }
 
-
-
   function closeModal(e: any) {
     setModalNumber(0)
     setIsOpen(false);
   }
+
+  function createAccount(){
+
+
+  }
+
+  function requestFunds(){
+
+
+  }
+
+
+
+
+
+
 
   return (
     <div className="App">
