@@ -35,6 +35,10 @@ function App() {
   const [pubKey, setPubKey] = React.useState('');
   const [privKey, setPrivKey] = React.useState('');
   const [authKey, setAuthKey] = React.useState('');
+  const [values, setValues] = React.useState({
+      amount: 0,
+      inputtedAddress: ''
+  });
 
   function openModal(e: any) {
     setModalNumber(e.target.id)
@@ -59,32 +63,40 @@ function App() {
   }
 
   async function requestFunds(inputs: any){
-    console.log(inputs)
     try{
-    const restClient = new RestClient(TESTNET_URL);
-    const faucetClient = new FaucetClient(FAUCET_URL, restClient);
-    await faucetClient.fundAccount(pubKey, 993_000_000);
-    let balance = await accountBalance(restClient);
-    closeModal(null)
-    setWarningType(true);
-    setWarningMessage('Account ' + address + ' funded. Balance is now ' + balance )
-    showWarning()
+        const restClient = new RestClient(TESTNET_URL);
+        const faucetClient = new FaucetClient(FAUCET_URL, restClient);
+        
+        if(values.inputtedAddress != undefined || values.amount != undefined){
+          setPubKey((values.inputtedAddress != '') ? values.inputtedAddress : pubKey )
+          setValues({...values, amount: ((values.amount != 0) ? values.amount : 0)})
+        }
+        if(values.amount != 0 ){
+          await faucetClient.fundAccount(pubKey, values.amount);
+        }else{
+          throw('Amount not entered');
+        }
 
+        let balance = await accountBalance(restClient);
+        setValues({ ...values, amount: 0 });
+        setValues({ ...values, inputtedAddress: '' });
+
+        closeModal(null)
+        setWarningType(true);
+        setWarningMessage('Account ' + address + ' funded. Balance is now ' + balance )
+        showWarning()
     }catch(e){
-      closeModal(null)
-      setWarningType(false);
-      setWarningMessage('Error occured: ' + e )
-      showWarning()
-      console.log(e)
+        closeModal(null)
+        setWarningType(false);
+        setWarningMessage('Error occured: ' + e )
+        showWarning()
+        console.log(e)
     }
   }
 
   async function accountBalance(client: any){
-
-  let balance = await client.accountBalance(address);
-  
-  console.log(balance);
-  return balance;
+    let balance = await client.accountBalance(address);
+    return balance;
   }
 
   function showWarning(){
@@ -96,9 +108,17 @@ function App() {
     setTimeout(() => {
       setWarning(false);
     }, 3000)
-
-
   }
+
+  function handleChangeForm(event: any) {
+    let name = event.target.name;
+    let value = event.target.value
+    setValues({ ...values, [name] : value });
+  };
+
+  function numberWithCommas(x: any ) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
 
@@ -149,10 +169,10 @@ function App() {
             <h2 >Request Funds</h2>
             <Grid container spacing={2}>
               <Grid item xs={12} >  
-                <TextField id="standard-basic" fullWidth helperText="If this is a newly generated Account you will need to input the Auth Key" label="Address" variant="standard" defaultValue={pubKey}/>
+                <TextField id="standard-basic"  onChange={handleChangeForm} name="inputtedAddress" fullWidth helperText="If this is a newly generated Account you will need to input the Auth Key" label="Address" variant="standard" defaultValue={pubKey}/>
               </Grid>
               <Grid item xs={12} >  
-                <TextField id="standard-basic" fullWidth label="Amount" variant="standard" defaultValue="0"/>
+                <TextField id="standard-basic" onChange={handleChangeForm}  name="amount" fullWidth label="Amount" variant="standard" defaultValue="0"/>
               </Grid>
               <Grid item xs={12} >  
                 <Button id="1" onClick={requestFunds}>Get Funds</Button>
