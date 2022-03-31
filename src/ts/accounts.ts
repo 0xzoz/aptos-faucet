@@ -5,6 +5,7 @@ import * as SHA3 from "js-sha3";
 import fetch from "cross-fetch";
 import * as Nacl from "tweetnacl";
 import assert from "assert";
+import {Buffer} from 'buffer';
 
 
 
@@ -41,6 +42,10 @@ export class Account {
   /** Returns the public key for the associated account */
   pubKey(): string {
     return Buffer.from(this.signingKey.publicKey).toString("hex");
+  }
+  /** Returns the public key for the associated account */
+  privKey(): string {
+    return Buffer.from(this.signingKey.secretKey).toString("hex");
   }
 }
 

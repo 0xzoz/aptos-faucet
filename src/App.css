@@ -20,12 +20,15 @@
   color: black;
 }
 
-div {
+.Title {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.New-account-modal {
+  text-align: center;
+}
 
 
 
