@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.Alert {
+  display:fixed;
+  top:0;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -27,6 +32,10 @@
 }
 
 .New-account-modal {
+  text-align: center;
+}
+
+.Request-funds-modal {
   text-align: center;
 }
 
