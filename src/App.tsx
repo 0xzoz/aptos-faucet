@@ -71,8 +71,9 @@ function App() {
             <Button id="1" onClick={openModal}>CREATE ACCOUNT</Button>
             <Button id="2" onClick={openModal}>REQUEST FUNDS</Button>
           </div>
-      </header>
 
+      </header>
+      <p className='Made-with'> Made with ❤️ by <a href='https://twitter.com/0xZOZ'>0xZOZ</a> </p>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

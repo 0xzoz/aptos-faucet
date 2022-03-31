@@ -30,6 +30,13 @@
   text-align: center;
 }
 
+.Made-with {
+  position: fixed;
+  bottom:0;
+  right:0;
+  padding-right: 20px;
+}
+
 
 
 
