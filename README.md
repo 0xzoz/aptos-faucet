@@ -1,10 +1,17 @@
-# Getting Started with Create React App
+# aptos-faucet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![cover image](https://pasteboard.co/mxyaBqCCluNs.png) 
 
-In the project directory, you can run:
+This project is used a tutorial to create a faucet on the Aptos devnet.
+
+## Aptos
+
+Aptos is a Diem/Move based L1 blockchain development by former Meta(Facebook) employees. Described as a Layer 1 for everyone - Building the safest and most scalable Layer 1 blockchain.
+
+## Tutorial
+
+This project is to demonstate using the Aptos API and easily developing a client based application that interacts with the Devnet.
 
 ### `npm start`
 
