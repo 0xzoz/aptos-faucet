@@ -1,13 +1,18 @@
 import React from 'react';
-import Modal from 'react-modal';
 import logo from './logo.jpg';
-import aptosLogo from './aptos_logo_wordmark_transparent_blk.png';
+import './App.css';
+//UI Change 2 
+//Import modules for UI and Aptos logo
+import aptosLogo from './aptos_logo.png';
+import Modal from 'react-modal';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
+
+
 import {TxnRequest, Account, RestClient, FaucetClient} from './ts/accounts'
-import './App.css';
+
 
 export const TESTNET_URL = "https://fullnode.devnet.aptoslabs.com";
 export const FAUCET_URL = "https://faucet.devnet.aptoslabs.com";
@@ -127,6 +132,8 @@ function App() {
 
 
   return (
+    //UI Change 3 --Start
+    //Import modules for UI and Aptos logo
     <div className="App">
       {warning ? <div><Alert className="Alert" severity={warningType ? 'success' : 'warning'}>{warningMessage}</Alert></div>:<div></div>}
 
@@ -182,6 +189,7 @@ function App() {
         }
       </Modal>
     </div>
+    //UI Change 3 --End
   );
 }
 

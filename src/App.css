@@ -2,15 +2,19 @@
   text-align: center;
 }
 
-.Alert {
-  display:fixed;
-  top:0;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 
+}
+
+/* UI Change 4 --START
+Adjust CSS */
+
+
+.Alert {
+  display:fixed;
+  top:0;
 }
 
 .Aptos-logo {
@@ -46,8 +50,11 @@
   padding-right: 20px;
 }
 
+/* UI Change 4 --END 
+Adjust CSS */
 
-
+/* UI Change 1 
+Change the logo to a nice faucet design and remove css */
 
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -69,6 +76,10 @@
 .App-link {
   color: black;
 }
+
+/* UI Change 1 
+Change the logo to a nice faucet design and remove css */
+
 /* 
 @keyframes App-logo-spin {
   from {
