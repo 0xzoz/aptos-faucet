@@ -10,10 +10,12 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
 
-
+//Connecting to the Aptos API Change 2.1 
+//Import into App.tsx
 import {TxnRequest, Account, RestClient, FaucetClient} from './ts/accounts'
 
-
+//Connecting to the Aptos API Change 2.2 
+//Add the Aptos endpoints
 export const TESTNET_URL = "https://fullnode.devnet.aptoslabs.com";
 export const FAUCET_URL = "https://faucet.devnet.aptoslabs.com";
 
@@ -31,11 +33,15 @@ const customStyles = {
 
 
 function App() {
+  //UI Logic 1  
+  //Add UI state
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [modal, setModalNumber] = React.useState(0);
   const [warning, setWarning] = React.useState(false);
   const [warningType, setWarningType] = React.useState(true);
   const [warningMessage, setWarningMessage] = React.useState('Funds added to Account');
+  //Connecting to the Aptos API Change 3 
+  //Add wallet state
   const [address, setAddress] = React.useState('');
   const [pubKey, setPubKey] = React.useState('');
   const [privKey, setPrivKey] = React.useState('');
@@ -45,6 +51,8 @@ function App() {
       inputtedAddress: ''
   });
 
+  //UI Logic 2  
+  //Add Modal functions
   function openModal(e: any) {
     setModalNumber(e.target.id)
     if(e.target.id == 1){
@@ -59,6 +67,28 @@ function App() {
     setIsOpen(false);
   }
 
+  //UI Logic 3  
+  //Add Warning functions
+  function showWarning(){
+    setWarning(true);
+    clearWarning();
+  }
+
+  function clearWarning(){
+    setTimeout(() => {
+      setWarning(false);
+    }, 3000)
+  }
+
+  function handleChangeForm(event: any) {
+    let name = event.target.name;
+    let value = event.target.value
+    setValues({ ...values, [name] : value });
+  };
+
+  
+  //Connecting to the Aptos API Change 2.3 
+  //Create Account function
   function createAccount(){
     let acc = new Account();
     setAddress(acc.address());
@@ -67,6 +97,8 @@ function App() {
     setAuthKey(acc.authKey());
   }
 
+  //Connecting to the Aptos API Change 2.4 
+  //Add Funds function
   async function requestFunds(inputs: any){
     try{
         const restClient = new RestClient(TESTNET_URL);
@@ -99,37 +131,11 @@ function App() {
     }
   }
 
+
   async function accountBalance(client: any){
     let balance = await client.accountBalance(address);
     return balance;
   }
-
-  function showWarning(){
-    setWarning(true);
-    clearWarning();
-  }
-
-  function clearWarning(){
-    setTimeout(() => {
-      setWarning(false);
-    }, 3000)
-  }
-
-  function handleChangeForm(event: any) {
-    let name = event.target.name;
-    let value = event.target.value
-    setValues({ ...values, [name] : value });
-  };
-
-  function numberWithCommas(x: any ) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-
-
-
-
-
 
   return (
     //UI Change 3 --Start
