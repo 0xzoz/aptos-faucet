@@ -1,7 +1,7 @@
 # aptos-faucet
 
 
-![cover image](https://imgur.com/SEaJXfC) 
+[![cover image](https://i.postimg.cc/C5ZPK34X/Screen-Shot-2022-04-01-at-9-47-56-AM.png)](https://postimg.cc/8fSBKn9m)
 
 This project is used a tutorial to create a faucet on the Aptos devnet.
 
