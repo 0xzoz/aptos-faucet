@@ -3,7 +3,7 @@
 
 [![cover image](https://i.postimg.cc/C5ZPK34X/Screen-Shot-2022-04-01-at-9-47-56-AM.png)](https://postimg.cc/8fSBKn9m)
 
-This project is used a tutorial to create a faucet on the Aptos devnet.
+This project is used as a tutorial to create a faucet on the Aptos devnet.
 
 ## Aptos
 
@@ -11,7 +11,7 @@ Aptos is a Diem/Move based L1 blockchain development by former Meta(Facebook) em
 
 ## Tutorial
 
-This project is to demonstate using the Aptos API and easily developing a client based application that interacts with the Devnet.
+This project is to demonstate using the Aptos API and easily developing a client based application that interacts with the Devnet. Check out the [tutorial](https://mirror.xyz/zoz.eth/nNL9L7HrDZEYrk8djg4JvJrZdw8AtfDgBG_xCML5_lE)
 
 ### `npm start`
 
@@ -48,6 +48,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Move Resources](https://github.com/MystenLabs/awesome-move)
+- [Aptos](https://aptoslabs.com/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
